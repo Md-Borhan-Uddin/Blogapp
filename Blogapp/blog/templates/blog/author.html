@@ -1,5 +1,23 @@
 {% extends 'blog/base.html' %}
-
 {% block content %}
-    <h1>author page</h1>
+    <div class="container">
+        <div class="row">
+        {% for post in auth_posts %}
+            <div class="col-md-4 mt-4">
+            <div class="card" style="width: 18rem;">
+            <img src="{{ post.post_img.url }}" class="card-img-top" alt="image"/>
+            <p class="text-center">Category:<a href="{% url 'category' cat=post.post_category.name %}">{{ post.post_category.name }}</a>
+            
+            <div class="card-body">
+            
+            <div class="card-title text-center">{{ post.title }}</div>>
+            <p class="card-text">{{ post.post_body|truncatewords:20  }}</p>
+            <a href="{% url 'single' id=post.id %}" class="btn btn-primary">Read More</a>
+            </div>
+            </div>
+            </div>
+        {% endfor %}   
+        </div>
+
+    </div>
 {% endblock content %}

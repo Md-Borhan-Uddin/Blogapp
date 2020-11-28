@@ -7,6 +7,6 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('single/<int:id>', views.single, name='single'),
     path('login', views.login, name='login'),
-    path('author', views.author, name='author'),
-    path('category', views.category, name='category'),
+    path('author/<str:auth>/post', views.author, name='author'),
+    path('category/<str:cat>', views.category, name='category'),
 ]

@@ -6,12 +6,12 @@
             <div class="col-md-4 mt-4">
             <div class="card" style="width: 18rem;">
             <img src="{{ post.post_img.url }}" class="card-img-top" alt="image"/>
-            <p class="text-center">Category:<a href="#">{{ post.post_category.name }}</a>
+            <p class="text-center">Category:<a href="{% url 'category' cat=post.post_category.name %}">{{ post.post_category.name }}</a>
             
             <div class="card-body">
             
             <div class="card-title text-center">{{ post.title }}</div>
-            <p class="text-center">Author:<a href="#">{{ post.post_author.name}}</a>
+            <p class="text-center">Author:<a href="{% url 'author' auth=post.post_author.name %}">{{ post.post_author.name }}</a>
             <p class="card-text">{{ post.post_body|truncatewords:20  }}</p>
             <a href="{% url 'single' id=post.id %}" class="btn btn-primary">Read More</a>
             </div>
