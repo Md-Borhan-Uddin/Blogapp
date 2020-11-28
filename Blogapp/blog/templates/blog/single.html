@@ -1,4 +1,59 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-<h1>Single Page</h1>
+<div class="container">
+    <div class="row">
+    <div class="col-md-8">
+        <img src="{{ post.post_img.url }}" class="s_img" alt="image"/>
+        <p>post Date:{{post.post_date}}</p>
+        <p>Author:{{post.post_author.name}}</p>
+        <p>Category:{{post.post_category.name}}</p>
+        <div class="row">
+        <p>{{post.post_body}}</p>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="top_post">
+            <h3 class="text-center">Top Post</h3>
+        </div>
+        {% for post in top_posts %}
+            <div class="col-md-4 mt-4">
+            <div class="card" style="width: 20rem;">
+            <img src="{{ post.post_img.url }}" class="card-img-top" alt="image"/>
+            <p class="text-center">Category:<a href="#">{{ post.post_category.name }}</a>
+            
+            <div class="card-body">
+            
+            <div class="card-title text-center">{{ post.title }}</div>
+            <p class="card-text">{{ post.post_body|truncatewords:10  }}</p>
+            <a href="{% url 'single' id=post.id %}" class="btn btn-primary">Read More</a>
+            </div>
+            </div>
+            </div>
+        {% endfor %} 
+    </div>
+    <div class="container">
+    <h3>Category:{{category}}</h3>
+        <div class="row">
+        
+        {% for cat in cats %}
+            <div class="col-md-4 mt-4">
+            <div class="card" style="width: 18rem;">
+            <img src="{{ cat.post_img.url }}" class="card-img-top" alt="image"/>
+            <p class="text-center">Category:<a href="#">{{ cat.post_category.name }}</a>
+            
+            <div class="card-body">
+            
+            <div class="card-title text-center">{{ post.title }}</div>
+            <p class="text-center">Author:<a href="#">{{ cat.post_author.name}}</a>
+            <p class="card-text">{{ cat.post_body|truncatewords:20  }}</p>
+            <a href="{% url 'single' id=post.id %}" class="btn btn-primary">Read More</a>
+            </div>
+            </div>
+            </div>
+        {% endfor %}   
+        </div>
+    </div>
+    </div>
+</div>
 {% endblock content %}

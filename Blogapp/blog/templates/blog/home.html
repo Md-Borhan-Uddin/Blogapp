@@ -11,9 +11,9 @@
             <div class="card-body">
             
             <div class="card-title text-center">{{ post.title }}</div>
-            <p class="text-center">Author:<a href="#">{{ post.post_author.name }}</a>
-            <p class="card-text">{{ post.post_body }}</p>
-            <a href="#" class="btn btn-primary">Read More</a>
+            <p class="text-center">Author:<a href="#">{{ post.post_author.name}}</a>
+            <p class="card-text">{{ post.post_body|truncatewords:20  }}</p>
+            <a href="{% url 'single' id=post.id %}" class="btn btn-primary">Read More</a>
             </div>
             </div>
             </div>
