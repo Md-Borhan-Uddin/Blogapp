@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+        {% for post in posts %}
+            <div class="col-md-4 mt-4">
+            <div class="card" style="width: 18rem;">
+            <img src="{{ post.post_img.url }}" class="card-img-top" alt="image"/>
+            <p class="text-center">Category:<a href="#">{{ post.post_category.name }}</a>
+            
+            <div class="card-body">
+            
+            <div class="card-title text-center">{{ post.title }}</div>
+            <p class="text-center">Author:<a href="#">{{ post.post_author.name }}</a>
+            <p class="card-text">{{ post.post_body }}</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+            </div>
+            </div>
+        {% endfor %}   
+        </div>
+
+    </div>
+{% endblock content %}
